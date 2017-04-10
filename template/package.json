@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "body-parser": "^1.17.1",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
