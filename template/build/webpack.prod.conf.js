@@ -8,7 +8,7 @@ var HtmlInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var baseConfig = require('./webpack.base.conf')
 
-module.exports = webpackMerge(baseConfig, {	
+module.exports = webpackMerge(baseConfig, {
 
 	devtool: 'source-map',
 
@@ -43,9 +43,11 @@ module.exports = webpackMerge(baseConfig, {
 
 	plugins: [
 		new webpack.DefinePlugin({
-      'process.env': '"production"'
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
     }),
-    
+
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
@@ -58,7 +60,7 @@ module.exports = webpackMerge(baseConfig, {
 	      collapseInlineTagWhitespace: true,
 			},
 			inlineSource: 'manifest.js$',
-			apiPath: '/dingding'
+			apiPath: ''
 		}),
 
 		// inline source
