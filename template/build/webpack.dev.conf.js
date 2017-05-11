@@ -18,29 +18,30 @@ module.exports = webpackMerge(baseConfig, {
 	    },
 	    {
 	    	test: /\.css$/,
-	    	loaders: ['style-loader', 'css-loader'] 
+	    	loaders: ['style-loader', 'css-loader']
 	    },
 	    {
 	    	test: /\.(styl)$/,
-	    	loaders: ['style-loader', 'css-loader', 'stylus-loader'] 
+	    	loaders: ['style-loader', 'css-loader', 'stylus-loader']
 	    }
   	]
   },
 
 	plugins: [
 		new webpack.DefinePlugin({
-      'process.env': '"development"'
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
     }),
-    
+
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: './index.html',
-			// apiPath: 'http://192.168.1.65'
-			apiPath: '/dingding'
+			apiPath: ''
 		}),
-		
+
 		// 报错但不退出webpack进程
-		new webpack.NoEmitOnErrorsPlugin(),		
+		new webpack.NoEmitOnErrorsPlugin(),
 	]
 })

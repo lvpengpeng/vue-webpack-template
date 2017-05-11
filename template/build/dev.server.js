@@ -31,6 +31,7 @@ config.entry['app'] = entryMixins.concat(config.entry['app'])
 var server = new WebpackDevServer(webpack(config), {
 	hot: useHot,
 	stats: { colors: true, chunks: false },
+  disableHostCheck: true,
 	// proxy: {
 	//   '/api': {
 	//     target: 'http://192.168.1.91',

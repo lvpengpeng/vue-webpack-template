@@ -1,11 +1,11 @@
-require('shelljs/global');
-env.NODE_ENV = 'production';
+require('shelljs/global')
+env.NODE_ENV = 'production'
 
-var webpack = require('webpack');
-var DeployPlugin = require('./deploy');
-var config = require('./webpack.prod.conf');
+var webpack = require('webpack')
+var DeployPlugin = require('deploy-kit/plugins/ftp-webpack-plugin')
+var config = require('./webpack.prod.conf')
 
-config.output.publicPath = '';
+// config.output.publicPath = ''
 
 config.plugins.push(
   new DeployPlugin({
@@ -15,7 +15,7 @@ config.plugins.push(
   }, [
     {reg: /.*$/, to: ''},
   ])
-);
+)
 
 webpack(config).watch({}, function(err, stats) {
   if (err) throw err
@@ -25,5 +25,5 @@ webpack(config).watch({}, function(err, stats) {
     children: false,
     chunks: false,
     chunkModules: false
-  }) + '\n');
-});
+  }) + '\n')
+})
