@@ -13,3 +13,8 @@ yarn run dev
 
 # build for production with minification
 yarn run build
+
+# release for production
+./release.js
+```
+
