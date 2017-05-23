@@ -6,29 +6,31 @@ import qs from 'qs'
 axios.defaults.withCredentials = true
 // 设置超时时间
 axios.defaults.timeout = 100000
+// 标识这是一个 ajax 请求
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 
-function onSuccess(response) {
-  if (response.data.code === '200') {
-    return response.data.data
+axios.interceptors.response.use(response => {
+  if (response.data.retcode === 2000000) {
+    return response.data.data || response.data
   }
-  throw Error(response.data.message)
-}
-
+  else {
+    throw Error(response.data.msg || '服务异常')
+  }
+})
 
 export default {
   /**
    *
    */
   post(url, params) {
-    return axios.post(url, params).then(onSuccess)
+    return axios.post(url, qs.stringify(params))
   },
 
   /**
    *
    */
   get(url, params = {}) {
-    params._t = Date.now()
-    return axios.get(url, { params }).then(onSuccess)
+    return axios.get(url, { params })
   },
 }

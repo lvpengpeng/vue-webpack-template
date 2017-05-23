@@ -5,6 +5,7 @@ var webpack = require('webpack')
 var webpackMerge = require('webpack-merge')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var baseConfig = require('./webpack.base.conf')
+var package = require('../package.json')
 
 module.exports = webpackMerge(baseConfig, {
 	// eval-source-map is faster for development
@@ -38,7 +39,8 @@ module.exports = webpackMerge(baseConfig, {
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: './index.html',
-			apiPath: ''
+			apiPath: '',
+      appVersion: package.version
 		}),
 
 		// 报错但不退出webpack进程

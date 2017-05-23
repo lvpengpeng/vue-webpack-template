@@ -7,8 +7,8 @@
 <template>
 <div>
   <div class="header">
-    <Navigator title="首页" url="#/" :isActive="this.$route.path === '/'"/>
-    <Navigator title="次页" url="#/second" :isActive="this.$route.path === '/second'"/>
+    <Navigator text="首页" url="#/" :isActive="this.$route.path === '/'"/>
+    <Navigator text="次页" url="#/second" :isActive="this.$route.path === '/second'"/>
   </div>
   <div style="padding-top: 50px; text-align: center;">
     <router-view></router-view>

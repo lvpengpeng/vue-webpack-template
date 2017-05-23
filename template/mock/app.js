@@ -1,14 +1,14 @@
-const express = require('express')
 const bodyParser = require('body-parser')
 const utils = require('./utils')
-const app = express()
 
-app.use(bodyParser.json())
-
-
-function handler(req, res) {
+function handler(req, res, next) {
   // get corresponding config for current request
-  const conf = utils.readJSON(__dirname + req.path + '.json')
+  try {
+    var conf = utils.readJSON(__dirname + req.path + '.json')
+  } catch(err) {
+    return next()
+  }
+
   const responseName = conf.responseName
 
   // paging
@@ -27,7 +27,7 @@ function handler(req, res) {
   }, conf.delay)
 }
 
-
-app.all('*', handler)
-
-app.listen(3000, () => {})
+module.exports = (app) => {
+  app.use(bodyParser.json())
+  app.all('*', handler)
+}

@@ -15,13 +15,13 @@
 </style>
 
 <template>
-<a class="navigator" :class="{active: isActive}" :href="url">{{title}}</a>
+<a class="navigator" :class="{active: isActive}" :href="url">{{text}}</a>
 </template>
 
 <script>
 export default {
   props: {
-    title: {
+    text: {
       type: [String, Number],
       required: true
     },
