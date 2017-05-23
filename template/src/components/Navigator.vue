@@ -15,7 +15,7 @@
 </style>
 
 <template>
-<a class="navigator" :class="{active: isActive}" :href="url">{{text}}</a>
+<a class="navigator" :class="{active: isActive}" :href="url" v-html="text"></a>
 </template>
 
 <script>
