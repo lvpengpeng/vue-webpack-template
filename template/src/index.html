@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
   <title>{{name}}</title>
   <script>
-    // 捕获异常的临时做法
-    window.onerror = function(msg) {
-      alert(msg)
-    }
-
     // 根据分辨率动态设置 html 的 font-size
     ;(function() {
       function setFontSize() {
@@ -25,7 +20,7 @@
 
     // 全局配置
     var __CONFIG__ = {}
-    __CONFIG__.API_PATH = '<%=htmlWebpackPlugin.options.apiPath%>'
+    __CONFIG__.apiPath = '<%=htmlWebpackPlugin.options.apiPath%>'
     __CONFIG__.version = '<%=htmlWebpackPlugin.options.appVersion%>'
   </script>
   <%=htmlWebpackPlugin.files.webpackManifest%>

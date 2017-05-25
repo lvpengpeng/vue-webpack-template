@@ -1,3 +1,4 @@
+require('es6-promise').polyfill()
 import Vue from 'vue'
 import Router from 'vue-router'
 import FastClick from 'fastclick'

@@ -4,7 +4,7 @@
  *   2. 接口地址很可能会发生格式变化，集中起来方便修改
  */
 
-const prefix = window.__CONFIG__.API_PATH
+const prefix = window.__CONFIG__.apiPath
 export default (config => {
   return Object.keys(config).reduce((copy, name) => {
     copy[name] = `${prefix}${config[name]}`

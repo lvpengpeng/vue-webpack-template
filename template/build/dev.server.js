@@ -8,7 +8,7 @@ var localIP = utils.getIP()
 var localServer = 'http://'+ localIP +':8080'
 
 // 是否使用热更新
-var useHot = true
+var useHot = false
 
 var entryMixins = [
 	// bundle the client for webpack-dev-server
