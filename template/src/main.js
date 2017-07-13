@@ -1,35 +1,45 @@
-require('es6-promise').polyfill()
 import Vue from 'vue'
-import Router from 'vue-router'
+{{#fastclick}}
 import FastClick from 'fastclick'
-import './css/common.css'
-import routes from './routes'
+{{/fastclick}}
+{{#smartui}}
 import SmartUI from 'smart-ui'
 import 'smart-ui/lib/smart-ui.css'
-import App from './App'
+{{/smartui}}
+import router from './router'
+import App from 'views/app'
+{{#sentry}}
 
-// // error tracking
-// import Raven from 'raven-js'
-// import RavenVue from 'raven-js/plugins/vue'
 
-// if (process.env.NODE_ENV === 'production') {
-//   Raven
-//     .config('', {
-//       release: __CONFIG__.version
-//     }).addPlugin(RavenVue, Vue).install()
-// }
+/**
+ * 使用 https://sentry.io 收集应用异常
+ */
+import Raven from 'raven-js'
+import RavenVue from 'raven-js/plugins/vue'
 
-Vue.use(Router)
-Vue.use(SmartUI)
+if (process.env.NODE_ENV === 'production') {
+  Raven
+    .config('', {
+      release: __CONFIG__.version
+    })
+    .addPlugin(RavenVue, Vue).install()
+}
+{{/sentry}}
 
+
+// promise polyfill
+require('es6-promise').polyfill()
+{{#fastclick}}
+
+
+// 解决移动端 300ms 点击延迟问题
 FastClick.attach(document.body)
+{{/fastclick}}
+{{#smartui}}
 
-const router = new Router({ routes })
+Vue.use(SmartUI)
+{{/smartui}}
 
-window.app = new Vue({
-  router,
-  ...App
-})
-.$mount('#app')
+window.app = new Vue({ el: '#app',{{#router}} router,{{/router}} ...App })
 
 

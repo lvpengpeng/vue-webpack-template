@@ -1,20 +1,18 @@
-# {{ name }}
+## {{ name }}
 
-> {{ description }}
-
-## Build Setup
+{{ description }}
 
 ``` bash
 # install dependencies
 yarn install
 
-# serve with hot reload at localhost:8080
-yarn run dev
+# start local server
+yarn start
 
-# build for production with minification
+# deploy to test server
+yarn run deploy
+
+# build for production
 yarn run build
-
-# release for production
-./release.js
 ```
 

@@ -1,11 +1,11 @@
-var webpack = require('webpack')
-var config = require('./webpack.prod.conf')
+const webpack = require('webpack')
+const config = require('./config/prod')
 
 webpack(config, function(err, stats) {
 	if (err) throw err
   console.log(stats.toString({
   	colors: true,
   	chunks: false,
-  	children: false
+    modules: false
   }))
 })

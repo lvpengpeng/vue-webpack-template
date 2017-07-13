@@ -4,48 +4,54 @@
   "description": "{{ description }}",
   "author": "{{ author }}",
   "scripts": {
-    "dev": "node build/dev.server.js",
-    "build": "node build/build.js",
-    "deploy:test": "node build/dev.remote.js",
-    "sentry": "node sentry.js"
+    {{#sentry}}
+    "sentry": "node scripts/sentry.js",
+    {{/sentry}}
+    "start": "node scripts/server.js",
+    "build": "rm -rf dist/* && node scripts/build.js",
+    "deploy": "node scripts/deploy.js"
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "body-parser": "^1.17.1",
-    "css-loader": "^0.28.1",
-    "deploy-kit": "^1.0.3",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
-    "file-loader": "^0.11.1",
-    "ftp": "^0.3.10",
-    "html-webpack-plugin": "^2.28.0",
-    "inline-manifest-webpack-plugin": "^3.0.1",
-    "ora": "^1.2.0",
+    "chunk-manifest-webpack-plugin": "^1.1.0",
+    "css-loader": "^0.28.4",
+    "deploy-kit": "^2.1.2",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.29.0",
     "shelljs": "^0.7.7",
-    "style-loader": "^0.17.0",
+    "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
-    "stylus-loader": "^2.4.0",
-    "url-loader": "^0.5.8",
-    "vue-loader": "^12.0.3",
-    "vue-template-compiler": "^2.3.2",
-    "webpack": "^2.5.1",
+    "stylus-loader": "^3.0.1",
+    "url-loader": "^0.5.9",
+    "vue-template-compiler": "^2.4.1",
+    "vue-template-loader": "^0.3.1",
+    "webpack": "^3.2.0",
     "webpack-chunk-hash": "^0.4.0",
-    "webpack-dev-server": "^2.4.5",
+    "webpack-dev-server": "^2.5.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "axios": "^0.16.1",
-    "bali.js": "github:xiaoyann/bali.js",
-    "es6-promise": "^4.1.0",
-    "fastclick": "^1.0.6",
-    "normalize.css": "^7.0.0",
     "qs": "^6.4.0",
+    "es6-promise": "^4.1.0",
+    {{#fastclick}}
+    "fastclick": "^1.0.6",
+    {{/fastclick}}
+    {{#sentry}}
     "raven-js": "^3.15.0",
-    "smart-ui": "^2.0.0",
-    "vue": "^2.3.2",
-    "vue-router": "^2.5.3"
+    {{/sentry}}
+    {{#smartui}}
+    "smart-ui": "^2.1.9",
+    {{/smartui}}
+    {{#router}}
+    "vue-router": "^2.5.3",
+    {{/router}}
+    "vue": "^2.3.2"
   }
 }

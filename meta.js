@@ -24,26 +24,26 @@ module.exports = {
       "type": "string",
       "message": "Author"
     },
-    "build": {
-      "type": "list",
-      "message": "Vue build",
-      "choices": [
-        {
-          "name": "Runtime + Compiler: recommended for most users",
-          "value": "standalone",
-          "short": "standalone"
-        },
-        {
-          "name": "Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere",
-          "value": "runtime",
-          "short": "runtime"
-        }
-      ]
+    "router": {
+      "type": "confirm",
+      "message": "Install vue-router?"
     },
-    // "router": {
-    //   "type": "confirm",
-    //   "message": "Install vue-router?"
-    // },
+    "stylus": {
+      "type": "confirm",
+      "message": "Using stylus?"
+    },
+    "fastclick": {
+      "type": "confirm",
+      "message": "Using fastclick?"
+    },
+    "smartui": {
+      "type": "confirm",
+      "message": "Using smart-ui?"
+    },
+    "sentry": {
+      "type": "confirm",
+      "message": "Using sentry?"
+    },
     // "lint": {
     //   "type": "confirm",
     //   "message": "Use ESLint to lint your code?"
@@ -86,7 +86,10 @@ module.exports = {
     "test/unit/**/*": "unit",
     "build/webpack.test.conf.js": "unit",
     "test/e2e/**/*": "e2e",
-    "src/router/**/*": "router"
+    "src/router/**/*": "router",
+    "src/**/*.styl": "stylus",
+    "src/**/*.css": "!stylus",
+    "src/sentry.js": "sentry"
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}yarn install\n  yarn run dev\n\nDocumentation can be found at https://github.com/xiaoyann/webpack-vue-template"
 };
