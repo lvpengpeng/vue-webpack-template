@@ -1,6 +1,8 @@
 # webpack-vue-template
 
-Vue.js 2 + Webpack + ES6 单页应用 template
+Vue.js + Webpack single page application template.
+
+## install by vue-cli
 
 ```
 $ vue init xiaoyann/webpack-vue-template your_project_name
@@ -11,3 +13,4 @@ $ vue init xiaoyann/webpack-vue-template your_project_name
 * autoprefix
 * eslint
 * test
+* deploy
