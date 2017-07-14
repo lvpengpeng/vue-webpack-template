@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin")
+const InlineManifestPlugin = require("inline-manifest-webpack-plugin")
 const helper = require('../helper')
 const config = require('../../config')
 const env = process.env.NODE_ENV
@@ -75,10 +75,8 @@ module.exports = {
       'process.env.NODE_ENV': `"${env}"`
     }),
 
-    new ChunkManifestPlugin({
-      filename: 'manifest.json',
-      manifestVariable: 'webpackManifest',
-      inlineManifest: true
+    new InlineManifestPlugin({
+      name: 'webpackManifest',
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
