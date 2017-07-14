@@ -45,3 +45,38 @@ exports.alias = function() {
   })
   return alias
 }
+
+exports.cssLoaders = function(name, extract) {
+  let loaders = [
+      {
+      loader: 'css-loader',
+      options: {
+        sourceMap: false,
+        minimize: isProd
+      }
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: false,
+      }
+    },
+  ]
+
+  if (name !== 'css') {
+    loaders.push({
+      loader: name + '-loader',
+      options: {
+        sourceMap: false
+      }
+    })
+  }
+
+  if (!isProd) {
+    loaders.unshift('style-loader')
+  } else {
+    loaders = extract.extract({use: loaders})
+  }
+
+  return loaders
+}

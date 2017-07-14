@@ -1,10 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin")
 const helper = require('../helper')
 const config = require('../../config')
 const env = process.env.NODE_ENV
+
+const extractAppCss = new ExtractTextPlugin('css/app.[contenthash].css')
+const extractLibCss = new ExtractTextPlugin('css/lib.[contenthash].css')
 
 module.exports = {
   context: config.root + '/src',
@@ -54,6 +58,14 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)(\?.*)$/,
         // https://github.com/webpack-contrib/url-loader
         loader: 'url-loader'
+      },
+      {
+        test: /\.css$/,
+        use: helper.cssLoaders('css', extractLibCss)
+      },
+      {
+        test: /\.styl$/,
+        use: helper.cssLoaders('stylus', extractAppCss)
       }
     ]
   },
@@ -77,7 +89,10 @@ module.exports = {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin(
       helper.htmlPluginOptions()
-    )
+    ),
+
+    extractAppCss,
+    extractLibCss
   ],
 
   // does not polyfill or mock any Node api
