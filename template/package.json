@@ -9,7 +9,7 @@
     {{/sentry}}
     "start": "node scripts/server.js",
     "build": "rm -rf dist/* && node scripts/build.js",
-    "deploy": "node scripts/deploy.js"
+    "deploy": "deploy-sftp"
   },
   "license": "MIT",
   "devDependencies": {
@@ -19,7 +19,7 @@
     "babel-preset-env": "^1.6.0",
     "body-parser": "^1.17.1",
     "css-loader": "^0.28.4",
-    "deploy-kit": "^2.1.2",
+    "deploy-kit": "^3.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
@@ -32,7 +32,7 @@
     "url-loader": "^0.5.9",
     "vue-template-compiler": "^2.4.1",
     "vue-template-loader": "^0.3.1",
-    "webpack": "^3.2.0",
+    "webpack": "^3.2.1",
     "webpack-chunk-hash": "^0.4.0",
     "webpack-dev-server": "^2.5.1",
     "webpack-merge": "^4.1.0"

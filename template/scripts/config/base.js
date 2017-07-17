@@ -1,11 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
+const WebpackChunkHash = require('webpack-chunk-hash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const InlineManifestPlugin = require("inline-manifest-webpack-plugin")
 const helper = require('../helper')
 const config = require('../../config')
 const env = process.env.NODE_ENV
+const isProd = env === 'production'
 
 const extractAppCss = new ExtractTextPlugin('css/app.[contenthash].css')
 const extractLibCss = new ExtractTextPlugin('css/lib.[contenthash].css')
@@ -28,7 +30,7 @@ module.exports = {
     path: config.root + '/dist',
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: "[name].[chunkhash].js",
-    publicPath: '/'
+    publicPath: isProd ? config.publicPath : '/'
   },
 
   resolve: {
@@ -89,10 +91,17 @@ module.exports = {
       helper.htmlPluginOptions()
     ),
 
+    // custom chunk hash
+    // https://github.com/alexindigo/webpack-chunk-hash
+    new WebpackChunkHash(),
+
+    // using hash as module id instead of index
+    new webpack.HashedModuleIdsPlugin(),
+
     extractAppCss,
     extractLibCss
   ],
 
   // does not polyfill or mock any Node api
-  node: env === 'production' ? false : {}
+  node: isProd ? false : {}
 }
