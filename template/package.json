@@ -35,7 +35,9 @@
     "webpack": "^3.2.1",
     "webpack-chunk-hash": "^0.4.0",
     "webpack-dev-server": "^2.5.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "vconsole-elements": "^1.0.2",
+    "vconsole": "^2.5.2"
   },
   "dependencies": {
     "axios": "^0.16.1",
