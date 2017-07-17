@@ -1,4 +1,4 @@
-# webpack-vue-template
+# vue-webpack-template
 
 Vue.js + Webpack single page application template.
 
@@ -16,4 +16,3 @@ $ vue init xiaoyann/vue-webpack-template your_project_name
 
 * eslint
 * test
-* deploy
