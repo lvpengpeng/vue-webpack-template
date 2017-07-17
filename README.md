@@ -5,7 +5,7 @@ Vue.js + Webpack single page application template.
 ## install by vue-cli
 
 ```
-$ vue init xiaoyann/webpack-vue-template your_project_name
+$ vue init xiaoyann/vue-webpack-template your_project_name
 ```
 
 ## features
