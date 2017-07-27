@@ -20,7 +20,7 @@ import RavenVue from 'raven-js/plugins/vue'
 if (process.env.NODE_ENV === 'production') {
   Raven
     .config('', {
-      release: __CONFIG__.version
+      release: window.__CONFIG__.version
     })
     .addPlugin(RavenVue, Vue).install()
 }
