@@ -14,5 +14,4 @@ $ vue init xiaoyann/vue-webpack-template your_project_name
 
 ## todos
 
-* eslint
 * test
