@@ -57,7 +57,7 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)(\?.*)$/,
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)(\?.*)?$/,
         // https://github.com/webpack-contrib/url-loader
         loader: 'url-loader'
       },
